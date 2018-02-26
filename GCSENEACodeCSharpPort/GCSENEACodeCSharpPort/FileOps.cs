@@ -60,19 +60,20 @@ namespace GCSENEACodeCSharpPort
 
         public static string GetUserData(string dir) //Has to be a string to account for capitals
         {
-            try
+            if (!File.Exists(dir))
+            {
+                Console.Clear();
+                Console.WriteLine("Incorrect, please try again");
+                bool b = false;
+                return b.ToString();
+            }
+            else
             {
                 string userName;
                 StreamReader ReadUserName = new StreamReader(dir); //Opens the text from dir
                 userName = Convert.ToString(ReadUserName.ReadLine()); //Converts data read by ReadUserName into string and stores it
                 ReadUserName.Close();
                 return userName;
-            }
-            catch (DirectoryNotFoundException)
-            {
-                Console.WriteLine("Incorrect, please try again");
-                bool b = false;
-                return b.ToString();
             }
         }
 
