@@ -67,7 +67,7 @@ namespace GCSENEACodeCSharpPort
                     try
                     {
                         int lineS = line;
-                        lineS = lineS - 1;
+                        lineS--;
 
                         questionAnswers[i] = File.ReadLines(userDir + QADir + valQA).Skip(lineS).Take(line).First();
                         i++;
