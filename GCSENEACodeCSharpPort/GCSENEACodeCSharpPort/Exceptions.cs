@@ -8,7 +8,7 @@ namespace GCSENEACodeCSharpPort
     {
         public static void NoUserFolderCatch()
         {
-            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+            string root = FileOps.GetRoot();
             string r = FileOps.GetCustomUserFolder(root);
             if (Directory.Exists(r) == false)
             {
@@ -27,7 +27,7 @@ namespace GCSENEACodeCSharpPort
         public static void NeaFolderDataCheck()
         {
             bool do1 = false;
-            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+            string root = FileOps.GetRoot();
 
             if (!Directory.Exists(root + "NeaFolderData"))
             {
@@ -89,7 +89,7 @@ namespace GCSENEACodeCSharpPort
                     }
                 } while (valueOneLoop == true);
 
-                string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+                string root = FileOps.GetRoot();
 
                 Directory.CreateDirectory(root + "NeaFolderData");
 

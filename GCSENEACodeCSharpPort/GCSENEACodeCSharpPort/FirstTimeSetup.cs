@@ -7,7 +7,7 @@ namespace GCSENEACodeCSharpPort
     {
         public static void MainFTS()
         {
-            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+            string root = FileOps.GetRoot();
 
             Console.Clear();
             Console.WriteLine("You will now setup your user data/questions location.");

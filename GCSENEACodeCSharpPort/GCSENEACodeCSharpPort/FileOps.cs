@@ -7,7 +7,7 @@ namespace GCSENEACodeCSharpPort
     {
         public static string GetUserDir(string inputUserName)
         {
-            string customDirectory = GetCustomUserFolder(Path.GetPathRoot(Directory.GetCurrentDirectory()));
+            string customDirectory = GetCustomUserFolder(GetRoot());
             string dir = customDirectory + inputUserName; //Creates a string for the directory location
             string v = GetUserData(dir);
 
@@ -40,7 +40,7 @@ namespace GCSENEACodeCSharpPort
 
         public static void MainFW(string[] userData)
         {
-            string dir = GetCustomUserFolder(Path.GetPathRoot(Directory.GetCurrentDirectory()));
+            string dir = GetCustomUserFolder(GetRoot());
 
             bool dirCheck = Directory.Exists(dir + userData[4] + @"\"); //Makes sure the user account doesn't already exist
 
@@ -89,6 +89,11 @@ namespace GCSENEACodeCSharpPort
             location.Trim();
             location = location + @"\";
             return location;
+        }
+
+        public static string GetRoot()
+        {
+            return Path.GetPathRoot(Directory.GetCurrentDirectory());
         }
     }
 }

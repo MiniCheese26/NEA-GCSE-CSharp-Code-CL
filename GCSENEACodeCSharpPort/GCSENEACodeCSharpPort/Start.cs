@@ -10,7 +10,7 @@ namespace GCSENEACodeCSharpPort
         {
             string[] userData = new string[5];
 
-            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+            string root = FileOps.GetRoot();
             DirectoryInfo countFolders = new DirectoryInfo(FileOps.GetCustomUserFolder(root));
 
             int postFirstTimeSetupCheck = countFolders.EnumerateDirectories().Count();

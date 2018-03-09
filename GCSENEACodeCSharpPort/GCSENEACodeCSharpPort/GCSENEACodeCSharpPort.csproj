@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfterQuestions.cs" />
     <Compile Include="Difficulty.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="FileOps.cs" />
