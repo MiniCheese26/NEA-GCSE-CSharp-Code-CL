@@ -16,13 +16,17 @@ namespace GCSENEACodeCSharpPort
             bool loop = true;
             int v = 1;
 
+            Console.WriteLine("Press enter to start your quiz");
+            Console.ReadKey();
+            Console.Clear();
+
             do //Any other way to do this? No way to just place a loop at the end like vb
             {
                 string[] questionAnswer = QAGet(root, questionAnwserDifficultyDir, v);
 
                 if (questionAnswer == null)
                 {
-                    AfterQuestions.DisplayUserScore(score, totalForPercent);
+                    AfterQuestions.DisplayUserScore(score, totalForPercent, difficultyAndSubjectArray[0], difficultyAndSubjectArray[1]);
                 }
 
                 Console.WriteLine(questionAnswer[0]);

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace GCSENEACodeCSharpPort
 {
-    class Login
+    public class Login
     {
         public static void SignIn()
         {
@@ -56,6 +59,8 @@ namespace GCSENEACodeCSharpPort
             Console.ReadKey();
 
             Console.Clear();
+
+            FileOps.WriteCurrentUserCall(userName);
 
             Difficulty.Choice();
         }
