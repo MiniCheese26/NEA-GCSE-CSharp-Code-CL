@@ -7,11 +7,12 @@ namespace GCSENEACodeCSharpPort
 {
     class Difficulty
     {
+        public static string[] usersChoice = new string[2]; //holy fuck how did i not know about these
+
         public static void Choice()
         {
             string[] subjectChoiceArray = new string[3] { "Music", "History", "Computer Science" };
             string[] difficultyChoiceArray = new string[3] { "Easy", "Medium", "Hard" };
-            string[] usersChoice = new string[2];
             string space = new string(' ', 1);
             bool subjectLoop;
             bool difficultyLoop;
@@ -49,7 +50,7 @@ namespace GCSENEACodeCSharpPort
 
             Console.Clear();
 
-            Questions.QuestionsMain(usersChoice);
+            Questions.QuestionsMain();
         }
 
         static bool CheckIfInputIsValid(string[] originalArray, string usersInput)
@@ -73,11 +74,6 @@ namespace GCSENEACodeCSharpPort
 
         public static string FirstLetterToUpper(string input)
         {
-            if (string.IsNullOrEmpty(input)) //Look into
-            {
-                throw new ArgumentException("String returned null or empty");
-            }
-
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
         }
     }

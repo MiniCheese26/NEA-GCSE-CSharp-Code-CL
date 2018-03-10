@@ -94,20 +94,5 @@ namespace GCSENEACodeCSharpPort
         {
             return Path.GetPathRoot(Directory.GetCurrentDirectory());
         }
-
-        public static void WriteCurrentUserCall(string userName)
-        {
-            string path = GetCustomUserFolder(GetRoot()) + "CurrentUser.txt";
-
-            File.Create(path).Close();
-            File.WriteAllText(path, userName);
-        }
-
-        public static string ReadCurrentUser()
-        {
-            string path = GetCustomUserFolder(GetRoot()) + "CurrentUser.txt";
-            string userName = File.ReadAllText(path);
-            return userName;
-        }
     }
 }

@@ -7,9 +7,10 @@ namespace GCSENEACodeCSharpPort
 {
     public class Login
     {
+        public static string userName;
+
         public static void SignIn()
         {
-            string userName;
             string PassInput;
             bool UserAccountCheck;
             bool PasswordComparisonCheck;
@@ -60,8 +61,6 @@ namespace GCSENEACodeCSharpPort
             Console.ReadKey();
 
             Console.Clear();
-
-            FileOps.WriteCurrentUserCall(userName);
 
             Difficulty.Choice();
         }

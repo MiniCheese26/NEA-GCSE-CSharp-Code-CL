@@ -7,9 +7,10 @@ namespace GCSENEACodeCSharpPort
 {
     class Questions
     {
-        public static void QuestionsMain(string[] difficultyAndSubjectArray)
+        public static void QuestionsMain()
         {
             string root = FileOps.GetRoot();
+            string[] difficultyAndSubjectArray = Difficulty.usersChoice;
             string questionAnwserDifficultyDir = @"Questions\" + difficultyAndSubjectArray[0] + @"\" + difficultyAndSubjectArray[1] + @"\";
             int score = 0;
             int totalForPercent = 0;

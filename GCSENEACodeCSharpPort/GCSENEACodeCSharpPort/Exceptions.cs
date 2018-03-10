@@ -10,6 +10,7 @@ namespace GCSENEACodeCSharpPort
         {
             string root = FileOps.GetRoot();
             string r = FileOps.GetCustomUserFolder(root);
+
             if (Directory.Exists(r) == false)
             {
                 Console.WriteLine("User account folder is missing, it will now be recreated");
