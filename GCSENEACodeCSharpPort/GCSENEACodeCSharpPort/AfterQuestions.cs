@@ -28,7 +28,7 @@ namespace GCSENEACodeCSharpPort
             switch (score)
             {
                 case 1:
-                    string forAppend = "You scored " + score + " with a percentage of " + percentage + " and a grade of " + arrayForGrade[0] + ". Subject: " + subject + " | Difficulty " + difficulty + " at " + DateTime.Now; //Fucking horrible why does it force me to do this
+                    string forAppend = "You scored " + score + " with a percentage of " + percentage + " and a grade of " + arrayForGrade[0] + ". Subject: " + subject + " | Difficulty " + difficulty + " at " + DateTime.Now; //Fucking horrible why does it force me to do this TRY TO FIND A WAY TO NOT DO THIS
                     File.AppendAllText(dir, forAppend + Environment.NewLine);
                     break;
             }

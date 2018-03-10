@@ -13,21 +13,16 @@ namespace GCSENEACodeCSharpPort
             string questionAnwserDifficultyDir = @"Questions\" + difficultyAndSubjectArray[0] + @"\" + difficultyAndSubjectArray[1] + @"\";
             int score = 0;
             int totalForPercent = 0;
-            bool loop = true;
-            int v = 1;
+            int line = 1;
+            int numberOfLines = Countlines(questionAnwserDifficultyDir);
 
             Console.WriteLine("Press enter to start your quiz");
             Console.ReadKey();
             Console.Clear();
 
-            do //Any other way to do this? No way to just place a loop at the end like vb
+            for (int i = 0; i < numberOfLines; i++)
             {
-                string[] questionAnswer = QAGet(root, questionAnwserDifficultyDir, v);
-
-                if (questionAnswer == null)
-                {
-                    AfterQuestions.DisplayUserScore(score, totalForPercent, difficultyAndSubjectArray[0], difficultyAndSubjectArray[1]);
-                }
+                string[] questionAnswer = QAGet(root, questionAnwserDifficultyDir, line);
 
                 Console.WriteLine(questionAnswer[0]);
                 string userRespone = Console.ReadLine();
@@ -37,23 +32,17 @@ namespace GCSENEACodeCSharpPort
                     Console.WriteLine("Correct");
                     score++;
                     totalForPercent++;
-                    v++;
+                    line++;
                 }
                 else if (userRespone != questionAnswer[1])
                 {
                     Console.WriteLine("False");
                     totalForPercent++;
-                    v++;
+                    line++;
                 }
-                else
-                {
-                    Console.WriteLine("???");
-                    v++;
-                }
-            } while (loop == true);
+            }
 
-
-            Console.ReadKey();
+            AfterQuestions.DisplayUserScore(score, totalForPercent, difficultyAndSubjectArray[0], difficultyAndSubjectArray[1]);
         }
 
         static string[] QAGet(string root, string QADir, int line)
@@ -68,18 +57,11 @@ namespace GCSENEACodeCSharpPort
             {
                 if (line >= 2)
                 {
-                    try
-                    {
-                        int lineS = line;
-                        lineS--;
+                    int lineSkip = line;
+                    lineSkip--;
 
-                        questionAnswers[i] = File.ReadLines(userDir + QADir + valQA).Skip(lineS).Take(line).First();
-                        i++;
-                    }
-                    catch (InvalidOperationException) //Fix with method to end if before executing this statement
-                    {
-                        return null;
-                    }
+                    questionAnswers[i] = File.ReadLines(userDir + QADir + valQA).Skip(lineSkip).Take(line).First();
+                    i++;
                 }
                 else
                 {
@@ -89,6 +71,30 @@ namespace GCSENEACodeCSharpPort
             }
 
             return questionAnswers;
+        }
+
+        static int Countlines(string QADir)
+        {
+            string root = FileOps.GetRoot();
+            string userDir = FileOps.GetCustomUserFolder(root);
+
+            int i = File.ReadAllLines(userDir + @"\" + QADir + "Answers.txt").Count();
+            int j = File.ReadAllLines(userDir + @"\" + QADir + "Questions.txt").Count();
+
+            if (i != j)
+            {
+                Console.WriteLine("Warning: Amount of questions and answers does not match");
+                if (i > j)
+                {
+                    return i;
+                }
+                else if (j > i)
+                {
+                    return j;
+                }
+            }
+
+            return i;
         }
     }
 }

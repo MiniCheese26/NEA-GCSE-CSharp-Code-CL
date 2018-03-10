@@ -40,7 +40,6 @@ namespace GCSENEACodeCSharpPort
                     if (firstRunAnswer == "yes")
                     {
                         Console.WriteLine("Running first time setup...");
-                        do1 = false;
                         FirstTimeSetup.MainFTS();
                     }
                     else if (firstRunAnswer == "no")

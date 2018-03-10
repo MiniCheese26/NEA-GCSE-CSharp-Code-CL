@@ -27,6 +27,7 @@ namespace GCSENEACodeCSharpPort
                 string userDir = userName + @"\Username.txt";
 
                 string UserCheck = FileOps.GetUserDir(userDir);
+                UserCheck.Trim();
 
                 if (UserCheck == "False")
                 {

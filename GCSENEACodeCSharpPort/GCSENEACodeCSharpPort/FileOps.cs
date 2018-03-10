@@ -64,16 +64,15 @@ namespace GCSENEACodeCSharpPort
             {
                 Console.Clear();
                 Console.WriteLine("Incorrect, please try again");
-                bool b = false;
-                return b.ToString();
+                return "False";
             }
             else
             {
                 string userName;
                 StreamReader ReadUserName = new StreamReader(dir); //Opens the text from dir
-                userName = Convert.ToString(ReadUserName.ReadLine()); //Converts data read by ReadUserName into string and stores it
+                userName = Convert.ToString(ReadUserName.ReadLine()); //Converts data read by ReadUserName into string and stores it 
                 ReadUserName.Close();
-                return userName;
+                return userName; //Would've used file.readallLines but it would pick up the whitespace and .trim and .remove wouldn't work for some reason.
             }
         }
 
