@@ -23,6 +23,11 @@ namespace GCSENEACodeCSharpPort
 
             for (int i = 0; i < numberOfLines; i++)
             {
+                if (i > 0)
+                {
+                    Console.WriteLine(" ");
+                }
+
                 string[] questionAnswer = QAGet(root, questionAnwserDifficultyDir, line);
 
                 Console.WriteLine(questionAnswer[0]);

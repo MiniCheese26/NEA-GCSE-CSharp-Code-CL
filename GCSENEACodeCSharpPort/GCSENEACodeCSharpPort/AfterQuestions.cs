@@ -10,7 +10,10 @@ namespace GCSENEACodeCSharpPort
         public static void DisplayUserScore(int score, int total, string subject, string difficulty)
         {
             Console.Clear();
-            Console.WriteLine("You scored {0}/{1} with a percentage of {2}%", score, total, score / total * 100);
+
+            decimal percentage = GetPercentage(score, total);
+            Console.WriteLine("You scored {0}/{1} with a percentage of {2}%", score, total, percentage);
+            Console.WriteLine("Log exported");
             string userName = Login.userName;
 
             if (!Directory.Exists(FileOps.GetCustomUserFolder(FileOps.GetRoot()) + userName + @"\Scores"))
@@ -22,8 +25,6 @@ namespace GCSENEACodeCSharpPort
             string[] arrayForGrade = new string[5] { "1c", "2c", "3c", "4c", "5c" };
 
             string dir = FileOps.GetCustomUserFolder(FileOps.GetRoot()) + userName + @"\Scores" + @"\UserScores.txt";
-
-            float percentage = score / total * 100;
 
             int scoreForGrade = score - 1;
 
@@ -37,27 +38,27 @@ namespace GCSENEACodeCSharpPort
                 forEndLoop = false;
                 Console.WriteLine("");
                 Console.WriteLine("What would you like to do next?");
-                Console.WriteLine("1. Play the quiz again");
-                Console.WriteLine("2. Choose a different quiz");
-                Console.WriteLine("3. Log-out");
-                Console.WriteLine("4. Quit");
-                int endOfQuizChoice = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("A. Play the quiz again");
+                Console.WriteLine("B. Choose a different quiz");
+                Console.WriteLine("C. Log-out");
+                Console.WriteLine("D. Quit");
+                string endOfQuizChoice = Console.ReadLine().ToUpper();
 
                 switch (endOfQuizChoice)
                 {
-                    case 1:
+                    case "A":
                         Console.Clear();
                         Questions.QuestionsMain();
                         break;
-                    case 2:
+                    case "B":
                         Console.Clear();
                         Difficulty.Choice();
                         break;
-                    case 3:
+                    case "C":
                         Console.Clear();
                         Login.SignIn();
                         break;
-                    case 4:
+                    case "D":
                         Environment.Exit(1);
                         break;
                     default:
@@ -71,5 +72,16 @@ namespace GCSENEACodeCSharpPort
             Console.ReadKey();
         }
 
+        static decimal GetPercentage(int score, int total)
+        {
+            decimal scoreDec = score;
+            decimal totalDec = total;
+
+            decimal result = (scoreDec / totalDec) * 100;
+
+            decimal rounded = Math.Round(result);
+
+            return rounded;
+        }
     }
 }
