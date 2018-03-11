@@ -45,7 +45,7 @@ namespace GCSENEACodeCSharpPort
             do
             {
                 Console.WriteLine("Do you have an account? Yes or No?"); //Ask user if they have an account
-                string AccountCheck = Console.ReadLine(); //Save response
+                string AccountCheck = Console.ReadLine().ToLower(); //Save response
                 AccountCheck.ToLower();
 
                 Console.WriteLine(space);
@@ -55,7 +55,6 @@ namespace GCSENEACodeCSharpPort
                     case "yes":
                         Console.Clear();
                         Login.SignIn(); //Move to method SignIn in class Login
-                        do2 = false; //Escape do loop
                         break;
                     case "no":
                         userData = UserInfo(); //Call method UserInfo to get user info, store return data in an array
@@ -63,7 +62,6 @@ namespace GCSENEACodeCSharpPort
                         Console.WriteLine("Your username is {0}", userData[4]);
 
                         FileOps.MainFW(userData.ToArray()); //Call FileOps.MainFW passing userData along
-                        do2 = false;
                         break;
                     default: //If the users reponse didn't equal yes or no
                         Console.WriteLine("Error incorrect response");

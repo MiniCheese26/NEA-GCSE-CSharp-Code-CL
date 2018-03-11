@@ -35,7 +35,7 @@ namespace GCSENEACodeCSharpPort
 
             string userFolderLocation = root + userFolderName;
 
-            string permDir = root + "NeaFolderData";
+            string permDir = @"C:\NeaFolderData";
             Directory.CreateDirectory(permDir);
 
             File.Create(permDir + @"\path.txt").Close();

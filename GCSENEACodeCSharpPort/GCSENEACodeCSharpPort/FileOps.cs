@@ -80,7 +80,7 @@ namespace GCSENEACodeCSharpPort
         {
             string location;
 
-            using (StreamReader r = new StreamReader(root + @"NeaFolderData\path.txt"))
+            using (StreamReader r = new StreamReader(@"C:\NeaFolderData\path.txt"))
             {
                 location = r.ReadLine();
             }

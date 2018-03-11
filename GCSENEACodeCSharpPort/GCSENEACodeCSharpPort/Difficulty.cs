@@ -72,7 +72,7 @@ namespace GCSENEACodeCSharpPort
             return false; //Find out how to do this correctly
         }
 
-        public static string FirstLetterToUpper(string input)
+        static string FirstLetterToUpper(string input)
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
         }
